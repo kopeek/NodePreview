@@ -52,8 +52,8 @@ This plugin uses Camera2D and SubViewport to take images of your textures. If
 You need to change some things, you can set custom Camera2D or custom SubViewport. You **don't**
 need to to it manually, the NodePreview, does this itself. But if you need to use custom settings,
 your Camera2D and SubViewport should be in that specific order like this:
-![](docs_images/only_camera.png)
+1. ![](docs_images/only_camera.png)
 Or
-![](docs_images/only_subviewport.png)
+2. ![](docs_images/only_subviewport.png)
 Or
-![](docs_images/both.png)
+3. ![](docs_images/both.png)
