@@ -18,17 +18,9 @@ anchor_mode = 0
 script = ExtResource("3_epypp")
 metadata/_custom_type_script = ExtResource("3_epypp")
 
-[node name="TextureRect" type="TextureRect" parent="NodePreview"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 598.0
-offset_top = 173.0
-offset_right = -420.0
-offset_bottom = -345.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch_mode = 2
+[node name="SubViewport" type="SubViewport" parent="NodePreview"]
+
+[node name="Camera2D" type="Camera2D" parent="NodePreview/SubViewport"]
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 offset_left = 131.0

@@ -13,8 +13,12 @@
         - [Offset settings](#offset-settings)
             - Try to center
             - Use node pivot offset
+        - [How to get image](#how-to-get-image)
     - [SubViewport](#custom-camera2d-and-subviewport)
     - [Camera](#custom-camera2d-and-subviewport)
+
+    - [Contact and collaboration](#contact-and-collaboration)
+    - [Future update](#)
 
 
 # Capture
@@ -46,6 +50,14 @@
 #### Use node pivot offset
 - If your node has some sort of offset (Pivot offset or offset), you can apply it.
 
+# How to get image
+- You can reference NodePreview and then call ```.get_image()``` from it
+    - It will return **Image** not **ImageTexture** used for sprites2D, TextureRect etc.
+    - If you want to convert from **Image** to **ImageTexture** you need to do it like this:
+    - ```var texture: = ImageTexture.create_from_image(image)```
+- Example:
+    ![](docs_images/how_to.png)
+
 # Custom Camera2D and SubViewport 
 ***For more advanced users***
 This plugin uses Camera2D and SubViewport to take images of your textures. If
@@ -57,3 +69,16 @@ Or
 2. ![](docs_images/only_subviewport.png)
 Or
 3. ![](docs_images/both.png)
+
+# Contact and Collaboration
+If you want to help, feel free to clone the project and make some changes.
+If you need more help, or maybe you need to contact me, you can contact me here, on the Github, or on Discord.
+My name on discord is: .susdog
+
+# Future updates
+I'm not abandoning this project yet, it's simple so the updates are also simple to do.
+This is the list of things I would like to add:
+- 3D support (Camera3D support etc.)
+- more image manipulation options
+    - Expand Margins
+    - Border Width
