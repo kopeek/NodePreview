@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://chttg6iquej2i"]
+
+[ext_resource type="Script" uid="uid://cvkoesj7fj0xl" path="res://addons/nodepreview/nodepreviewnode.gd" id="1_6dmhn"]
+
+[node name="NodePreview" type="Node" node_paths=PackedStringArray("custom_subViewport", "custom_camera_2D")]
+script = ExtResource("1_6dmhn")
+custom_subViewport = NodePath("@SubViewport@21812")
+custom_camera_2D = NodePath("@SubViewport@21812/@Camera2D@21813")
+metadata/_custom_type_script = ExtResource("1_6dmhn")
