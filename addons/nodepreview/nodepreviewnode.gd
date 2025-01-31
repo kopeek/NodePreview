@@ -1,5 +1,4 @@
 @icon("res://rysunek-1.svg")
-@tool
 extends Node
 class_name NodePreview
 
@@ -39,8 +38,7 @@ func _ready() -> void:
 	_make_camera_2D()
 	_capture_box()
 	
-	
-	
+
 func _capture_box():
 	match capture_type:
 		0:
@@ -57,7 +55,7 @@ func _capture_box():
 			
 	
 func _set_camera_and_viewport(node: Node):
-	custom_subViewport.size = capture_sprite.get_rect().size
+	custom_subViewport.size = node.get_rect().size
 	custom_camera_2D.position = node.position
 	if use_node_pivot_offset:
 		custom_camera_2D.position += _try_to_get_offset(node)
