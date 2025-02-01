@@ -3,14 +3,22 @@ extends Node
 class_name NodePreview
 
 @export_group("Capture")
+## It takes an image perferctly aligned to the sprite texture ([method Sprite2D.get_rect])
 @export var capture_sprite: Sprite2D
+## check [member try_to_center] If you are using TextureRect.
+## It uses the rect of the box to take an image ([method TextureRect.get_rect])
 @export var capture_box: TextureRect
+## Basically the same as [b]Capture Box[/b] but you can enter your custom node with rect
 @export var custom_capture_box: Node
+## If you don't want to use node, to select an area. You can do it from the code
 @export var capture_rect: Rect2i
 
+## Select what type do you want to use. [b]Remember[/b] to set the specific capture type, so it won't result in an error
 @export_enum("Sprite2D", "TextureRect", "Custom Rect", "Custom Rect Data") var capture_type: int = 0
 @export_subgroup("Offset")
+## If you are using anything different than sprite2D, you would probably need to turn this on.
 @export var try_to_center: bool = false
+## If your node has some sort of offset (Pivot offset or offset), you can apply it.
 @export var use_node_pivot_offset: bool = false
 
 #@export var use_custom_offset: bool = false
@@ -25,9 +33,11 @@ class_name NodePreview
 
 
 @export_group("SubViewport")
+## optional, don't need to set it
 @export var custom_subViewport: SubViewport
 
 @export_group("Camera")
+## optional, don't need to set it
 @export var custom_camera_2D: Camera2D
 
 
@@ -39,7 +49,7 @@ func _ready() -> void:
 	_capture_box()
 	
 
-func _capture_box():
+func _capture_box() -> void:
 	match capture_type:
 		0:
 			_set_camera_and_viewport(capture_sprite)
@@ -54,7 +64,10 @@ func _capture_box():
 				custom_camera_2D.position += Vector2(capture_rect.size / 2)
 			
 	
-func _set_camera_and_viewport(node: Node):
+func _set_camera_and_viewport(node: Node) -> void:
+	if node == null: 
+		push_warning("[NodePreview] There is no capture box or sprite")
+		return
 	custom_subViewport.size = node.get_rect().size
 	custom_camera_2D.position = node.position
 	if use_node_pivot_offset:
@@ -62,17 +75,17 @@ func _set_camera_and_viewport(node: Node):
 	if try_to_center:
 		custom_camera_2D.position += node.get_rect().size / 2
 	
-func _try_to_get_offset(node: Node):
+func _try_to_get_offset(node: Node) -> Vector2:
 	if node.get("offset") != null: return node.get("offset")
 	if node.get("pivot_offset") != null: return node.get("pivot_offset")
 	return Vector2(0,0)
 	
-func get_image():
+func get_image() -> Image:
 	await RenderingServer.frame_post_draw
 	var image: Image = custom_subViewport.get_viewport().get_texture().get_image()
 	return image
 	
-func _make_sub_viewport():
+func _make_sub_viewport() -> void:
 	if custom_subViewport != null: return
 	custom_subViewport = SubViewport.new()
 	custom_subViewport.world_2d = get_tree().root.world_2d
@@ -81,7 +94,7 @@ func _make_sub_viewport():
 	custom_subViewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(custom_subViewport)
 
-func _make_camera_2D():
+func _make_camera_2D() -> void:
 	if custom_camera_2D != null: 
 		custom_camera_2D.reparent(custom_subViewport)
 		return
