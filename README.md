@@ -50,7 +50,7 @@ A plugin for Godot 4.2+ to help you make "screenshots" or "image" of any sprite 
 #### Use node pivot offset
 - If your node has some sort of offset (Pivot offset or offset), you can apply it.
 
-# How to get image
+# How to get an image
 - You can reference NodePreview and then call ```.get_image()``` from it
 	- It will return **Image** not **ImageTexture** used for sprites2D, TextureRect etc.
 	- If you want to convert from **Image** to **ImageTexture** you need to do it like this:
