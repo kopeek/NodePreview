@@ -14,17 +14,21 @@ texture = ExtResource("1_wtcfe")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="NodePreview" type="Node" parent="."]
+[node name="NodePreview" type="Node" parent="." node_paths=PackedStringArray("capture_box")]
 script = ExtResource("3_epypp")
+capture_box = NodePath("../TextureRect2")
+capture_type = 1
+try_to_center = true
 metadata/_custom_type_script = ExtResource("3_epypp")
 
-[node name="SubViewport" type="SubViewport" parent="NodePreview"]
-
-[node name="Camera2D" type="Camera2D" parent="NodePreview/SubViewport"]
-
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = 131.0
-offset_top = 84.0
-offset_right = 295.0
-offset_bottom = 216.0
-pivot_offset = Vector2(50, 0)
+offset_left = 79.0
+offset_top = 50.0
+offset_right = 278.0
+offset_bottom = 240.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 432.0
+offset_top = 143.0
+offset_right = 653.0
+offset_bottom = 358.0
