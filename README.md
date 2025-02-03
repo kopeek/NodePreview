@@ -78,7 +78,7 @@ My name on discord is: .susdog
 # Future updates
 I'm not abandoning this project yet, it's simple so the updates are also simple to do.
 This is the list of things I would like to add:
-- 3D support (Camera3D support etc.)
-- more image manipulation options
-	- Expand Margins
-	- Border Width
+- [] 3D support (Camera3D support etc.)
+- [] more image manipulation options
+	- [] Expand Margins
+	- [] Border Width
