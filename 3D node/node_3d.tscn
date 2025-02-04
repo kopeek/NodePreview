@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://diy0o2p54a5sd"]
+
+[ext_resource type="Script" uid="uid://dcjt6e61p3skl" path="res://3D node/node_3d.gd" id="1_ctdm4"]
+[ext_resource type="Script" uid="uid://cvkoesj7fj0xl" path="res://addons/nodepreview/nodepreviewnode.gd" id="2_xv2qx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8oheb"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ctdm4"]
+sky_material = SubResource("ProceduralSkyMaterial_8oheb")
+
+[sub_resource type="Environment" id="Environment_xv2qx"]
+background_mode = 2
+sky = SubResource("Sky_ctdm4")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_f77ji"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ctdm4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xv2qx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.927308, 0.374299, 0, -0.374299, 0.927308, 0.00553226, 0.990557, 1.83796)
+fov = 76.3663
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_f77ji")
+
+[node name="NodePreview" type="Node" parent="." node_paths=PackedStringArray("custom_subViewport")]
+script = ExtResource("2_xv2qx")
+environment = 1
+custom_subViewport = NodePath("SubViewport")
+metadata/_custom_type_script = ExtResource("2_xv2qx")
+
+[node name="SubViewport" type="SubViewport" parent="NodePreview"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 1
+
+[node name="Camera3D2" type="Camera3D" parent="NodePreview/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0751, 0, 1.76435)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 510.0
+offset_bottom = 469.0
+expand_mode = 1
+stretch_mode = 4

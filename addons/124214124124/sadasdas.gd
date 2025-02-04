@@ -3,7 +3,8 @@ extends EditorPlugin
 
 
 func _enter_tree() -> void:
-	print("[NodePreview] Please report any bugs to me, Discord: .susdog")
+	# Initialization of the plugin goes here.
+	pass
 
 
 func _exit_tree() -> void:

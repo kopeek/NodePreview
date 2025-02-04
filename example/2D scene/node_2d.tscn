@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6syrlwy3qt6l"]
+
+[ext_resource type="Script" uid="uid://dynj5ktpeoms3" path="res://example/2D scene/node_2d.gd" id="1_i1tkm"]
+[ext_resource type="Texture2D" uid="uid://biex6dq8nfmgj" path="res://icon.svg" id="2_ici03"]
+[ext_resource type="Script" uid="uid://cvkoesj7fj0xl" path="res://addons/nodepreview/nodepreviewnode.gd" id="3_il8rs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_epypp"]
+font_size = 30
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_i1tkm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(175, 150)
+texture = ExtResource("2_ici03")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(253, 202)
+texture = ExtResource("2_ici03")
+
+[node name="NodePreview" type="Node" parent="."]
+script = ExtResource("3_il8rs")
+metadata/_custom_type_script = ExtResource("3_il8rs")
+
+[node name="CaptureBox" type="TextureRect" parent="."]
+offset_left = 79.0
+offset_top = 50.0
+offset_right = 278.0
+offset_bottom = 240.0
+stretch_mode = 2
+
+[node name="OutputBox" type="TextureRect" parent="."]
+offset_left = 635.0
+offset_top = 167.0
+offset_right = 897.0
+offset_bottom = 399.0
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 480.0
+offset_top = 86.0
+offset_right = 991.0
+offset_bottom = 128.0
+text = "this is the image of the capture box"
+label_settings = SubResource("LabelSettings_epypp")

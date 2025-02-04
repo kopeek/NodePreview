@@ -14,16 +14,18 @@ A plugin for Godot 4.2+ to help you make "screenshots" or "image" of any sprite 
 			- Try to center
 			- Use node pivot offset
 		- [How to get image](#how-to-get-image)
-	- [SubViewport](#custom-camera2d-and-subviewport)
-	- [Camera](#custom-camera2d-and-subviewport)
+	- [Performance](#performance)
+	- [SubViewport](#custom-camera-and-subviewport)
+	- [Camera](#custom-camera-and-subviewport)
 
 	- [Contact and collaboration](#contact-and-collaboration)
 	- [Future update](#)
 
 
-# Capture
-![NodePreview settings](docs_images/full_view.png)
+# Node
+![NodePreview settings](docs_images/full_view2.png)
 
+# Capture 2D
 ## Capture types
 - Capture Sprite
 	- It takes an image perferctly aligned to the sprite texture (rect)
@@ -50,20 +52,52 @@ A plugin for Godot 4.2+ to help you make "screenshots" or "image" of any sprite 
 #### Use node pivot offset
 - If your node has some sort of offset (Pivot offset or offset), you can apply it.
 
+# Capture 3D
+
+![](docs_images/capture3d.png)
+
+
+## Use resolution
+
+- Viewport Size
+	- It uses the root viewport
+- Closest Viewport Size 
+	- it uses the closest Viewport
+- Custom
+	- You can set up your custom Viewport below
+
+
+
 # How to get an image
 - You can reference NodePreview and then call ```.get_image()``` from it
 	- It will return **Image** not **ImageTexture** used for sprites2D, TextureRect etc.
 	- If you want to convert from **Image** to **ImageTexture** you need to do it like this:
 	- ```var texture: = ImageTexture.create_from_image(image)```
 - Example:
-	![](docs_images/how_to.png)
+![](docs_images/how_to.png)
 
-# Custom Camera2D and SubViewport 
+# Performance
+
+**for move advanced users**
+The default settings render only once, so It isn't very performance-costly, only if you will get image every frame you will have a very big FPS drop.
+
+![](docs_images/performance.png)
+
+### Subviewport Update 
+- It tell when to render. Check in the Godot docs to **Subviewport UPDATE_MODE**
+
+### Update Every Call
+- It will reset the subviewport to Update Once, everytime you will call get_image(), so it will update the render image
+
+
+# Custom Camera and SubViewport 
+![](docs_images/subviewport_camera.png)
+
 ***For more advanced users***
-This plugin uses Camera2D and SubViewport to take images of your textures ***(You don't need to set them, it sets them automatically)***. If
-You need to change some things, you can set custom Camera2D or custom SubViewport. You **don't**
+This plugin uses Camera and SubViewport to take images of your textures ***(You don't need to set them, it sets them automatically)***. If
+You need to change some things, you can set custom Camera or custom SubViewport. You **don't**
 need to to it manually, the NodePreview, does this itself. But if you need to use custom settings,
-your Camera2D and SubViewport should be in that specific order like this:
+your Camera and SubViewport should be in that specific order like this:
 1. ![](docs_images/only_camera.png)
 Or
 2. ![](docs_images/only_subviewport.png)
@@ -78,7 +112,7 @@ My name on discord is: .susdog
 # Future updates
 I'm not abandoning this project yet, it's simple so the updates are also simple to do.
 This is the list of things I would like to add:
-- [] 3D support (Camera3D support etc.)
-- [] more image manipulation options
-	- [] Expand Margins
-	- [] Border Width
+
+- [ ] more image manipulation options
+	- [ ] Expand Margins
+	- [ ] Border Width
