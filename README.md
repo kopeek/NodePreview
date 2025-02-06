@@ -13,13 +13,13 @@ A plugin for Godot 4.2+ to help you make "screenshots" or "image" of any sprite 
 		- [Offset settings](#offset-settings)
 			- Try to center
 			- Use node pivot offset
-		- [How to get image](#how-to-get-image)
+		- [How to get image](#how-to-get-an-image)
 	- [Performance](#performance)
 	- [SubViewport](#custom-camera-and-subviewport)
 	- [Camera](#custom-camera-and-subviewport)
 
 	- [Contact and collaboration](#contact-and-collaboration)
-	- [Future update](#)
+	- [Future update](#future-updates)
 
 
 # Node
